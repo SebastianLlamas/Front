@@ -1,0 +1,191 @@
+<nav id="css_body">
+    <div class="css_panel">
+      <img src="https://mh-2-stockagency.panthermedia.net/media/previews/0011000000/11586000/11586559_high.jpg" alt="" class="css_avatar">
+      <h2 class="css_username">Sam Smith</h2>
+      <span class="css_config">Configuración</span>
+      <hr>
+      <div class="css_menu">
+        <div class="css_menuItem active">Dashboard</div>
+        <div class="css_menuItem" (click)="modal('js_modalDevices')">Dispositivos</div>
+        <div class="css_menuItem" (click)="modal('js_modalUsers')">Usuarios</div>
+      </div>
+
+    </div>
+    <div class="css_panel">
+      <div class="css_color"></div>
+      <div class="css_content" id='js_content'>
+        <h1 class='css_title white'>Unidades</h1>
+        <div class="css_card">
+          <div class="css_info">
+            <h2>992834</h2>
+            <label for=""><strong>Estado</strong></label>
+            <label for="">Optimo<span class="green"></span></label>
+          </div>
+          <div class="css_graphs">
+            <div class="graph">
+              <div class="data">
+                <label>Temperatura</label>
+                <span id="tempLabel"></span>
+              </div>
+              <canvas id='chart1'></canvas>
+            </div>
+            <div class="graph">
+              <div class="data">
+                <label>Humedad</label>
+                <span id="humLabel"></span>
+              </div>
+              <canvas id='chart2'></canvas>
+            </div>
+
+            <div class="graph">
+              <div class="data">
+                <label>Rotacion</label>
+                <span id="rotLabel"></span>
+              </div>
+              <span class="icon" id="chart3"></span>
+            </div>
+          </div>
+        </div>
+        <div class="css_card">
+          <div class="css_info">
+            <h2>432256</h2>
+            <label for=""><strong>Estado</strong></label>
+            <label for="">Medio<span class="yellow"></span></label>
+          </div>
+          <div class="css_graphs">
+            <div class="graph">
+              <div class="data">
+                <label>Temperatura</label>
+                <span id="tempLabel2"></span>
+              </div>
+              <canvas id='chart4'></canvas>
+            </div>
+            <div class="graph">
+              <div class="data">
+                <label>Humedad</label>
+                <span id="humLabel2"></span>
+              </div>
+              <canvas id='chart5'></canvas>
+            </div>
+
+            <div class="graph">
+              <div class="data">
+                <label>Rotacion</label>
+                <span id="rotLabel2"></span>
+              </div>
+              <span class="icon" id="chart6"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="css_panel" id="log">
+      <div class="css_titleBar">Log</div>
+    </div>
+  </nav>
+
+  <!--MODALS-->
+
+  <div class="css_modalContainer" id="js_modalDevices" style="display: none;">
+    <div class="css_modal">
+      <div class="head"><h4>Dispositivos</h4></div>
+      <div class="content" style="display: flex;">
+        <div class="css_modalList">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  Dispositivo
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>123145</td>
+              </tr>
+              <tr>
+                <td>981237</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="css_modalForm">
+          <h3>Nuevo Dispositivo</h3>
+          <form #newDevice="ngForm" (submit)="newDevice()">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="device.name" #name="ngModel" required>
+            <span *ngIf="name.touched && !name.valid">
+              Usuario obligatorio
+            </span>
+            <label>Responsable</label>
+            <input type="text" [(ngModel)]="device.user" #user="ngModel" required>
+            <span *ngIf="user.touched && !user.valid">
+              Usuario obligatorio
+            </span>
+            <button type="submit" class="primary w100">Guardar</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer">
+        <button class="cancel" (click)="closeModal('js_modalDevices')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="css_modalContainer" id="js_modalUsers" style="display: none;">
+    <div class="css_modal">
+      <div class="head"><h4>Usuarios</h4></div>
+      <div class="content" style="display: flex;">
+        <div class="css_modalList">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  Usuarios
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>admin</td>
+                </tr>
+                <tr>
+                  <td>eployeee</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="css_modalForm">
+          <form #newUser="ngForm" (submit)="newUser()">
+            <h3>Nuevo Usuario</h3>
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="user.firstname" #firstname="ngModel" required>
+            <span *ngIf="firstname.touched && !firstname.valid">
+              Nombre obligatoria
+            </span>
+            <label>Apellidp</label>
+            <input type="text" [(ngModel)]="user.lastname" #lastname="ngModel" required>
+              <span *ngIf="lastname.touched && !lastname.valid">
+                Apellido obligatoria
+              </span>
+            <label>email</label>
+            <input type="email" [(ngModel)]="user.email" #email="ngModel" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$">
+              <span *ngIf="email.touched && !email.valid">
+                Email obligatoria
+              </span>
+            <label>Contrase&ntilde;a</label>
+            <input type="password" [(ngModel)]="user.password" #password="ngModel" name ="password" required>
+              <span *ngIf="password.touched && !password.valid">
+                Contraseña obligatoria
+              </span>
+              <label>Imagen</label>
+            <input type="image" name="image" id="inpImage">
+            <button type="submit" class="primary w100">Guardar</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer">
+        <button class="cancel" (click)="closeModal('js_modalUsers')">Cerrar</button>
+      </div>
+    </div>
+  </div>

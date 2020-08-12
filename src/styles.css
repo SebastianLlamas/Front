@@ -1,1 +1,541 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+:root
+{
+
+    --menuWidth: 120px;
+    --colorPrimary: #15caa3;
+    --colorPrimaryDark: #008f70;
+
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body
+{
+    display: flex;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#css_menu
+{
+    width: var(--menuWidth);
+    background-color: rgb(45, 54, 52);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#css_menu .item
+{
+    position: relative;
+    width: var(--menuWidth);
+    height: fit-content;
+    padding: 30px 15px;
+
+    font-size: 14px;
+    color: white;
+    text-align: center;
+
+    cursor: pointer;
+
+}
+
+#css_menu .item:hover
+{
+    background: #ffffff22;
+}
+
+#css_menu .item ion-icon
+{
+    width: 100%;
+    font-size: 24px;
+}
+
+#css_body
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow-y: auto;
+    background-color: #fafafa;
+    position: relative;
+}
+
+.css_color
+{
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--colorPrimary), var(--colorPrimaryDark));
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.css_topBar
+{
+    height: 60px;
+    width: calc(100% + 30px);
+    margin: 0 -15px;
+    background-color: white;
+    box-shadow: 0 0 12px #00000044;
+    position: absolute;
+    top: 0;
+    padding: 0 15px;
+    z-index: 1000;
+}
+
+.css_content
+{
+    position: relative;
+    width: 100%;
+}
+
+.css_content .css_title
+{
+    margin: 30px 0;
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: 0 0 6px #000a;
+}
+
+.css_title.white
+{
+    color: white;
+}
+
+.css_card
+{
+    padding: 15px 20px 0;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    border: 1px solid #000;
+    box-shadow: 0 2px 8px #000a;
+    margin: 10px 0 30px;
+
+    display: flex;
+}
+
+.css_card .css_info
+{
+    width: 14%;
+    display: flex;
+    flex-flow: column;
+}
+
+.css_card .css_info h2
+{
+    color: white;
+    box-shadow: 0 0px 6px #0000;
+    font-size: 2em;
+    margin: 0 0 14px;
+}
+
+.css_card .css_info label
+{
+    width: fit-content;
+}
+
+.css_card .css_info label strong
+{
+    color: #fffa;
+}
+
+.css_card .css_info label span
+{
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border-radius: 50%;
+    border: 1px solid #0003;
+    float: right;
+    margin-left: 10px;
+}
+
+.css_card .css_info label span.green
+{
+    background-color: #37e470;
+    box-shadow: 0 0 12px #37e470;
+}
+.css_card .css_info label span.yellow
+{
+    background-color: #e4d337;
+    box-shadow: 0 0 12px #e4d337;
+}
+.css_card .css_graphs
+{
+    width: 86%;
+    display: flex;
+}
+
+.css_graphs .graph
+{
+    width: 40%;
+    height: 130px;
+    display: flex;
+    padding: 0 0 0 30px;
+}
+
+.css_graphs .graph:last-child
+{
+    width: 20%;
+}
+
+
+.css_graphs .graph canvas
+{
+    height: 110px;
+    width: 70%;
+}
+
+.css_graphs .graph .data
+{
+    width: 100px;
+    height: fit-content;
+    font-weight: bold;
+    padding: 6px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.css_graphs .graph .data label
+{
+    width: 100%;
+    font-size: 1.4em;
+    color: #fffa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.css_graphs .graph .data span
+{
+    width: 100%;
+    font-size: 56px;
+    z-index: 10;
+}
+
+.css_graphs .graph .icon
+{
+    background-color: #fffa;
+    border-radius: 8px;
+    width: 100px;
+    height: 80px;
+    margin: 18px 0 0 20px;
+    transition: .5s;
+    box-shadow: 0 0 6px #000;
+}
+
+.css_card.login
+{
+    width: 320px;
+    margin: 20vh auto 0;
+    padding: 20px;
+    height: 235px;
+}
+
+input
+{
+    border-radius: 4px;
+    border: 1px solid #dadada;
+    background-color: #00000011;
+    width: calc(100% - 20px);
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.btn
+{
+    width: calc(100% - 0px);
+    padding: 15px 10px;
+    background-color: var(--colorPrimaryDark);
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 8px #00000044;
+    border-radius: 4px;
+    border: 1px solid var(--colorPrimaryDark);
+}
+
+.btn:active
+{
+    background-color: var(--colorPrimary);
+    box-shadow: 0 0 0px #00000044;
+}
+
+.css_panel
+{
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.css_panel:not(:last-child)
+{
+    border-right: 1px solid #0004;
+}
+
+.css_panel:nth-child(1)
+{
+    width: 300px;
+    background-color: #333;
+}
+
+.css_panel:nth-child(2)
+{
+    width: calc(100% - 700px);
+    background-color: #444;
+}
+
+.css_panel:nth-child(3)
+{
+    width: 400px;
+    background-color: #333;
+    padding: 45px 0 0;
+}
+
+.css_titleBar
+{
+    border-bottom:1px solid #0006;
+    background-color: #444;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.log
+{
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: white;
+    font-weight: lighter;
+    padding: 4px 15px ;
+    font-size: .8em;
+}
+.log:not(:last-child)
+{
+    border-bottom:1px solid #0003;
+}
+
+
+/*PANEL PROFILE*/
+
+
+.css_avatar
+{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 40px calc(50% - 100px) 20px;
+    border-radius: 50%;
+}
+
+.css_username
+{
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+.css_config
+{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--colorPrimary);
+    cursor: pointer;
+}
+
+.css_menu
+{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% + 30px);
+    margin: 0 -15px;
+    height: fit-content;
+}
+
+.css_menuItem
+{
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    border-bottom: 1px solid #fff4;
+    cursor: pointer;
+}
+
+.css_menuItem:hover
+{
+    background-color: #444;
+}
+
+.css_menuItem.active
+{
+    color: var(--colorPrimary);
+}
+
+/*modals*/
+
+.css_modalContainer
+{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    top: 0;left: 0;
+    background-color: #0006;
+    backdrop-filter: blur(4px);
+}
+
+.css_modal
+{
+    width: 900px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #444;
+    border: 1px solid #0003;
+
+    margin: 80px auto;
+
+    animation-name: modal;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+}
+
+@keyframes modal
+{
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.css_modal .head
+{
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    border-bottom: 1px solid #fff4;
+    box-sizing: border-box;
+}
+
+.css_modal .head h4
+{
+    margin: 0;
+}
+
+.css_modal .content
+{
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+.css_modal .footer
+{
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    border-top: 1px solid #fff4;
+    box-sizing: border-box;
+}
+
+button
+{
+    background-color: #aaa;
+    border-radius: 3px;
+    border: .7px solid #0003;
+    font-size: 1.1em;
+    color: white;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+button.primary
+{
+    background-color: rgb(27, 177, 94);
+}
+
+button.cancel
+{
+    background-color: rgb(231, 132, 18);
+}
+
+table.table
+{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+table.table tr td,
+table.table tr th
+{
+    padding: 4px 10px;
+}
+
+table.table thead
+{
+    background-color: #fff5;
+}
+
+table.table tbody tr
+{
+    border-top: 1px solid #fff5;
+}
+
+.css_modalList
+{
+    width: 400px;
+    padding-right: 15px;
+    border-right: 1px solid #fff5;
+    max-height: 255px;
+    overflow: auto;
+}
+
+.css_modalForm
+{
+    width: calc(100% - 400px);
+    padding-left: 15px;
+}
+
+.css_modalForm label
+{
+    color: white;
+    font-weight: normal;
+    font-size: .9em;
+    opacity: .8;
+}
+
+.css_modalForm input
+{
+    border-radius: 4px;
+    border: 1px solid #0005;
+    background-color: #8888;
+    padding: 10px;
+    color: white;
+}
+
+.w100
+{
+    width: 100%;
+}
