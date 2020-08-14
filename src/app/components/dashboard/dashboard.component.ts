@@ -17,17 +17,6 @@ export class DashboardComponent implements OnInit {
   public dataTem: number;
   public dataHum: number;
   public chart;
-  public devices = ``;
-  public userDevice = {
-    firstname: '',
-    email: '',
-    lastname: '',
-    password: '',
-    name: '',
-    user: '',
-    node: '',
-    status: ''
-  };
   public device: Device;
   public userModel: User;
   constructor(
@@ -100,7 +89,14 @@ export class DashboardComponent implements OnInit {
     document.getElementById(id).style.display = 'block';
   }
   newUser(){
-
+    this.userService.addUser(this.userModel).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
   newDevice(){
     this.deviceService.AddDevice(this.device).subscribe(
