@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, Params} from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
 import { Device } from '../../models/device';
@@ -21,7 +22,9 @@ export class DashboardComponent implements OnInit {
   public userModel: User;
   constructor(
     private userService: UsersService,
-    private  deviceService: DevicesService) {
+    private  deviceService: DevicesService,
+    private router: Router
+    ) {
       this.userModel = new User('', '', '', '', '', '');
       this.device = new Device('', '', '', '');
   }
@@ -30,7 +33,7 @@ export class DashboardComponent implements OnInit {
     const Nuser = JSON.parse(localStorage.getItem('user'));
     const name = `${Nuser.name.firstname}  ${Nuser.name.lastname}`;
     document.getElementById('Usuario').innerHTML = name;
-    document.getElementById('avar').setAttribute('src', `http://localhost:3000/${Nuser.image}`);
+    document.getElementById('avar').setAttribute('src', `https://simvu.herokuapp.com/${Nuser.image}`);
 
 
     this.chart = new Chart('chart1', {
@@ -76,11 +79,18 @@ export class DashboardComponent implements OnInit {
       }
     });
     setInterval(() => {this.getLecture(); }, 4000);
+    this.devices();
+    this.users();
   }
 
 
 
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
 
+  }
   closeModal(id){
     document.getElementById(id).style.display = 'none';
 
@@ -149,6 +159,49 @@ export class DashboardComponent implements OnInit {
   updateChartData(chart, data, dataSetIndex){
     chart.data.datasets[dataSetIndex].data = data;
     chart.update();
+  }
+
+  devices(){
+    this.deviceService.getDevices().subscribe(
+      res => {
+        const  userL = res.docs;
+        console.log(res);
+        const List = document.getElementById('devicesLis');
+        userL.forEach((val , index) => {
+
+          const tem = `
+          <tr>
+          <td>${userL[index].name}</td>
+        </tr>
+          `;
+          List.insertAdjacentHTML('beforeend', tem);
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  users(){
+    this.userService.getUsers().subscribe(
+      res => {
+        const  userL = res.docs ;
+        console.log(res);
+        const List = document.getElementById('userLis');
+        userL.forEach((val , index) => {
+          console.log();
+          const tem = `
+          <tr>
+          <td>${userL[index].name.firstname} ${userL[index].name.lastname}</td>
+        </tr>
+          `;
+          List.insertAdjacentHTML('beforeend', tem);
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

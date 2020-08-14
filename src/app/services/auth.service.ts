@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private URL = 'http://localhost:3000';
+  private URL = 'https://simvu.herokuapp.com/api/sim/';
   constructor(
     private http: HttpClient,
     private router: Router) { }
 
 
   signIn(user){
-    return this.http.post<any>(this.URL + '/signin', user);
+    return this.http.post<any>(this.URL + 'signin', user);
   }
 
   loggedIn(){

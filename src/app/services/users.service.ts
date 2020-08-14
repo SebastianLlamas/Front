@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
-  private URL = 'http://localhost:3000/';
+  private URL = 'https://simvu.herokuapp.com/api/sim/';
 
   constructor(
     private http: HttpClient

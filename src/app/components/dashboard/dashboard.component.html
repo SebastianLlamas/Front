@@ -8,6 +8,7 @@
         <div class="css_menuItem active">Dashboard</div>
         <div class="css_menuItem" (click)="modal('js_modalDevices')">Dispositivos</div>
         <div class="css_menuItem" (click)="modal('js_modalUsers')">Usuarios</div>
+        <div class="css_menuItem" (click)="logOut()">Cerrar Sesion</div>
       </div>
 
     </div>
@@ -95,7 +96,7 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="devicesLis">
               <tr>
                 <td>123145</td>
               </tr>
@@ -141,13 +142,7 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <td>admin</td>
-                </tr>
-                <tr>
-                  <td>eployeee</td>
-                </tr>
+            <tbody id="userLis">
             </tbody>
           </table>
         </div>
