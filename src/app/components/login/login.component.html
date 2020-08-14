@@ -3,7 +3,7 @@
     <div class="form">
       <h3>Iniciar Sesion</h3>
         <form  #loginForm="ngForm" (submit)="singIn()">
-        <input type="email" [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="Email" id="inpUser" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$" autofocus>
+        <input type="email" [(ngModel)]="user.email"  #email="ngModel" name="email" placeholder="Email" id="inpUser" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$" >
         <span *ngIf="email.touched &&!email.valid">Correo incorrecto</span>
         <input type="password" [(ngModel)]="user.password" #password="ngModel" name ="password" placeholder="Contrase&ntilde;a" id="inpPsw" required>
         <span *ngIf="password.touched && !password.valid">

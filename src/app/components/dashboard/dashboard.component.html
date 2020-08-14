@@ -1,7 +1,7 @@
 <nav id="css_body">
     <div class="css_panel">
-      <img src="https://mh-2-stockagency.panthermedia.net/media/previews/0011000000/11586000/11586559_high.jpg" alt="" class="css_avatar">
-      <h2 class="css_username">Sam Smith</h2>
+      <img src="https://mh-2-stockagency.panthermedia.net/media/previews/0011000000/11586000/11586559_high.jpg" alt="" class="css_avatar" id="avar">
+      <h2 class="css_username" id ="Usuario">Sam Smith</h2>
       <span class="css_config">Configuración</span>
       <hr>
       <div class="css_menu">
@@ -15,9 +15,8 @@
       <div class="css_color"></div>
       <div class="css_content" id='js_content'>
         <h1 class='css_title white'>Unidades</h1>
-        <div class="css_card">
+        <div class="css_card" >
           <div class="css_info">
-            <h2>992834</h2>
             <label for=""><strong>Estado</strong></label>
             <label for="">Optimo<span class="green"></span></label>
           </div>
@@ -27,25 +26,22 @@
                 <label>Temperatura</label>
                 <span id="tempLabel"></span>
               </div>
-              <canvas id='chart1'></canvas>
+
             </div>
             <div class="graph">
               <div class="data">
                 <label>Humedad</label>
                 <span id="humLabel"></span>
               </div>
-              <canvas id='chart2'></canvas>
             </div>
-
-            <div class="graph">
-              <div class="data">
-                <label>Rotacion</label>
-                <span id="rotLabel"></span>
-              </div>
-              <span class="icon" id="chart3"></span>
+            <div id="chartdata">
+              <canvas class="charts" id='chart1'></canvas>
+              <canvas class="charts" id='chart2'></canvas>
             </div>
           </div>
         </div>
+
+        <!--
         <div class="css_card">
           <div class="css_info">
             <h2>432256</h2>
@@ -76,7 +72,7 @@
               <span class="icon" id="chart6"></span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="css_panel" id="log">
@@ -111,14 +107,14 @@
         </div>
         <div class="css_modalForm">
           <h3>Nuevo Dispositivo</h3>
-          <form #newDevice="ngForm" (submit)="newDevice()">
+          <form  #deviceForm="ngForm" (submit)="newDevice()">
             <label>Nombre</label>
-            <input type="text" [(ngModel)]="device.name" #name="ngModel" required>
+            <input type="text" [(ngModel)]="device.name" #name="ngModel" name ="name" required>
             <span *ngIf="name.touched && !name.valid">
               Usuario obligatorio
             </span>
             <label>Responsable</label>
-            <input type="text" [(ngModel)]="device.user" #user="ngModel" required>
+            <input type="text" [(ngModel)]="device.user" #user="ngModel" name="user" required>
             <span *ngIf="user.touched && !user.valid">
               Usuario obligatorio
             </span>
@@ -156,31 +152,31 @@
           </table>
         </div>
         <div class="css_modalForm">
-          <form #newUser="ngForm" (submit)="newUser()">
+          <form  #userForm="ngForm" (submit)="newUser()">
             <h3>Nuevo Usuario</h3>
             <label>Nombre</label>
-            <input type="text" [(ngModel)]="user.firstname" #firstname="ngModel" required>
+            <input type="text" [(ngModel)]="userModel.firstname" name="firstname" #firstname="ngModel" required>
             <span *ngIf="firstname.touched && !firstname.valid">
               Nombre obligatoria
             </span>
-            <label>Apellidp</label>
-            <input type="text" [(ngModel)]="user.lastname" #lastname="ngModel" required>
+            <label>Apellido</label>
+            <input type="text" [(ngModel)]="userModel.lastname"name="lastname" #lastname="ngModel" required>
               <span *ngIf="lastname.touched && !lastname.valid">
                 Apellido obligatoria
               </span>
             <label>email</label>
-            <input type="email" [(ngModel)]="user.email" #email="ngModel" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$">
+            <input type="email" [(ngModel)]="userModel.email" #email="ngModel" required name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$">
               <span *ngIf="email.touched && !email.valid">
                 Email obligatoria
               </span>
             <label>Contrase&ntilde;a</label>
-            <input type="password" [(ngModel)]="user.password" #password="ngModel" name ="password" required>
+            <input type="password" [(ngModel)]="userModel.password" #password="ngModel" name ="password" required>
               <span *ngIf="password.touched && !password.valid">
                 Contraseña obligatoria
               </span>
               <label>Imagen</label>
-            <input type="image" name="image" id="inpImage">
-            <button type="submit" class="primary w100">Guardar</button>
+            <input type="file" name="image" id="inpImage">
+            <button type="submit" class="primary w100"  [disabled]="!userForm.form.valid">Guardar</button>
           </form>
         </div>
       </div>

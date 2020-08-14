@@ -4,7 +4,6 @@ export class Device {
     public name: string,
     public user: string,
     public node: string,
-    public status: string,
-    public startDate: Date
+    public status: string
   ){}
 }

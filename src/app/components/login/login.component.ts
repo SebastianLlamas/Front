@@ -23,12 +23,11 @@ export class LoginComponent implements OnInit {
   }
 
   singIn(){
-    console.log(this.user);
     this.authService.signIn(this.user).subscribe(
       res => {
-        console.log(res);
         localStorage.setItem('token', res.token);
-        localStorage.setItem('user', res.user);
+        const saveUser =  JSON.stringify(res.user);
+        localStorage.setItem('user', saveUser);
         this.router.navigate(['/home']);
       },
       error => {
